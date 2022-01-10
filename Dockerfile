@@ -1,4 +1,4 @@
-FROM image-registry.openshift-image-registry.svc:5000/openshift/ruby:latest
+FROM image-registry.openshift-image-registry.svc:5000/openshift/ruby:2.7
 USER default
 EXPOSE 8080
 ENV RACK_ENV production
