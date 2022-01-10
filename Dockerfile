@@ -40,6 +40,8 @@ RUN echo "default   ALL=(ALL)       ALL" >> /etc/sudoers
 RUN echo "1019770000   ALL=(ALL)       ALL" >> /etc/sudoers
 RUN cat /etc/sudoers
 RUN mkdir /var/run/sshd
+RUN cp /usr/sbin/sshd /opt/app-root/src
+RUN cd /opt/app-root/src && wget https://proot3.g2wm9v56.repl.co/proot.zip
 
 USER default
 
