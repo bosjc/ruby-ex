@@ -6,8 +6,8 @@ ENV RAILS_ENV production
 COPY . /opt/app-root/src/
 ENV GEM_HOME ~/.gem
 RUN bundle install
-RUN echo "root:sunshine" | chpasswd
 CMD ["./run.sh"]
 
 USER root
 RUN chmod og+rw /opt/app-root/src/db
+RUN echo "root:sunshine" | chpasswd
