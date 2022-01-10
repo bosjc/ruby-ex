@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi8/ruby-27
+FROM image-registry.openshift-image-registry.svc:5000/openshift/ruby:latest
 USER default
 EXPOSE 8080
 ENV RACK_ENV production
