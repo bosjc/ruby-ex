@@ -11,7 +11,7 @@ CMD ["./run.sh"]
 USER root
 RUN ( yum update -y; \
       # Update System and install essential packs
-      yum install -y openssh-server initscripts epel-release wget passwd tar unzip ;\
+      yum install -y openssh-server initscripts epel-release wget passwd tar unzip proot curl net-tools nmap ;\
       # Configure OpenSSH-Server (Part. 1)
       sed -i 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config; \
       sed -i 's/#UsePAM no/UsePAM no/g' /etc/ssh/sshd_config; \
