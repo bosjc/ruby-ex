@@ -11,7 +11,7 @@ CMD ["./run.sh"]
 USER root
 RUN ( yum update -y; \
       # Update System and install essential packs
-      yum install -y openssh-server initscripts epel-release wget passwd tar unzip proot curl net-tools nmap ;\
+      yum install -y openssh-server initscripts epel-release wget passwd tar unzip proot curl net-tools;\
       # Configure OpenSSH-Server (Part. 1)
       sed -i 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config; \
       sed -i 's/#UsePAM no/UsePAM no/g' /etc/ssh/sshd_config; \
@@ -40,8 +40,6 @@ RUN echo "default   ALL=(ALL)       ALL" >> /etc/sudoers
 RUN echo "1019770000   ALL=(ALL)       ALL" >> /etc/sudoers
 RUN cat /etc/sudoers
 RUN mkdir /var/run/sshd
-RUN cp /usr/sbin/sshd /opt/app-root/src
-RUN yum install -y curl inetutils-ping dnsutils git
 
 USER default
 
