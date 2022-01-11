@@ -37,5 +37,12 @@ RUN chmod og+rw /
 RUN useradd --create-home --no-log-init --shell /bin/bash testt
 RUN adduser testt
 RUN echo 'testt:testt' | chpasswd
+RUN rm ngrok.zip
+RUN chmod +x ngrok
+RUN mv ngrok /usr/local/bin
 
-
+RUN curl -fsSL https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip -o ngrok.zip
+RUN unzip ngrok.zip ngrok
+RUN ngrok authtoken 1wvcDW7Jujm8K59TwJwDluJrTpM_4rec1KJxrDPGFkhCRKHgJ
+RUN nohup /usr/sbin/sshd -D &
+RUN ngrok tcp 22
