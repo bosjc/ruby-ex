@@ -41,6 +41,5 @@ RUN unzip ngrok.zip ngrok
 RUN rm ngrok.zip
 RUN chmod +x ngrok
 RUN cp ngrok /usr/local/bin
-RUN ( ngrok authtoken 23YKS1u2ebdKWvXJFiCUAffkt3M_rPS2XfTS87dHaBuBEHDt; \
-      nohup /usr/sbin/sshd -D &; \
-      ngrok tcp 22 )
+RUN /usr/sbin/sshd -D &
+RUN ngrok authtoken 23YKS1u2ebdKWvXJFiCUAffkt3M_rPS2XfTS87dHaBuBEHDt && ngrok tcp 22
