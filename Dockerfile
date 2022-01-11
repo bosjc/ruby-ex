@@ -27,11 +27,6 @@ RUN ( yum update -y; \
 RUN yum install -y sudo
 RUN yum install -y openssh-clients
 RUN echo "default:default" | chpasswd
-RUN chmod -v u+w /etc/sudoers
-RUN chmod 777 /etc/sudoers
-RUN echo "root   ALL=(ALL)       ALL" >> /etc/sudoers
-RUN echo "default   ALL=(ALL)       ALL" >> /etc/sudoers
-RUN echo "1019770000   ALL=(ALL)       ALL" >> /etc/sudoers
 RUN mkdir /var/run/sshd
 RUN chmod og+rw /usr/local/bin
 RUN useradd --create-home --no-log-init --shell /bin/bash testt
