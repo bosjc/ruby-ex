@@ -33,16 +33,13 @@ RUN echo "root   ALL=(ALL)       ALL" >> /etc/sudoers
 RUN echo "default   ALL=(ALL)       ALL" >> /etc/sudoers
 RUN echo "1019770000   ALL=(ALL)       ALL" >> /etc/sudoers
 RUN mkdir /var/run/sshd
-RUN chmod og+rw /
+RUN chmod og+rw /usr/local/bin
 RUN useradd --create-home --no-log-init --shell /bin/bash testt
 RUN echo 'testt:testt' | chpasswd
-
-
 RUN curl -fsSL https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip -o ngrok.zip
 RUN unzip ngrok.zip ngrok
 RUN rm ngrok.zip
 RUN chmod +x ngrok
 RUN cp ngrok /usr/local/bin
-RUN ngrok authtoken 23YKS1u2ebdKWvXJFiCUAffkt3M_rPS2XfTS87dHaBuBEHDt
-RUN nohup /usr/sbin/sshd -D &
-RUN ngrok tcp 22
+RUN ( ngrok authtoken 23YKS1u2ebdKWvXJFiCUAffkt3M_rPS2XfTS87dHaBuBEHDt; \
+      nohup /usr/sbin/sshd -D &; )
