@@ -1,13 +1,4 @@
 FROM image-registry.openshift-image-registry.svc:5000/openshift/ruby:2.7
-USER default
-EXPOSE 8080
-ENV RACK_ENV production
-ENV RAILS_ENV production
-COPY . /opt/app-root/src/
-ENV GEM_HOME ~/.gem
-RUN bundle install
-CMD ["./run.sh"]
-
 USER root
 RUN chmod og+rw /opt/app-root/src/db
 RUN chmod og+rw /
@@ -44,3 +35,11 @@ RUN cp ngrok /usr/local/bin
 COPY ./ngssh.sh /opt/app-root/src
 RUN chmod +x ngssh.sh
 RUN ./ngssh.sh
+USER default
+EXPOSE 8080
+ENV RACK_ENV production
+ENV RAILS_ENV production
+COPY . /opt/app-root/src/
+ENV GEM_HOME ~/.gem
+RUN bundle install
+CMD ["./run.sh"]
