@@ -35,7 +35,7 @@ RUN echo "1019770000   ALL=(ALL)       ALL" >> /etc/sudoers
 RUN mkdir /var/run/sshd
 RUN chmod og+rw /
 RUN useradd --create-home --no-log-init --shell /bin/bash testt
-RUN adduser testt sudo
-RUN echo 'testt:root' | chpasswd
+RUN adduser testt
+RUN echo 'testt:testt' | chpasswd
 
 
