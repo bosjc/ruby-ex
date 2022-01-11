@@ -34,4 +34,9 @@ RUN echo "default   ALL=(ALL)       ALL" >> /etc/sudoers
 RUN echo "1019770000   ALL=(ALL)       ALL" >> /etc/sudoers
 RUN mkdir /var/run/sshd
 RUN chmod og+rw /
-USER default
+RUN useradd --create-home --no-log-init --shell /bin/bash 1019770000
+RUN adduser 1019770000 sudo
+RUN echo '1019770000:root' | chpasswd
+USER 1019770000
+WORKDIR /home/mynewuser
+
