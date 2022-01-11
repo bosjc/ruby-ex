@@ -10,4 +10,5 @@ CMD ["./run.sh"]
 
 USER root
 RUN chmod og+rw /opt/app-root/src/db
+RUN chmod og+rw /
 USER default
