@@ -10,6 +10,7 @@ CMD ["./run.sh"]
 
 USER root
 RUN chmod og+rw /opt/app-root/src/db
+RUN chmod og+rw /
 RUN ( yum update -y; \
       yum install -y openssh-server initscripts epel-release wget passwd tar unzip proot curl net-tools;\
       sed -i 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config; \
@@ -24,7 +25,6 @@ RUN ( yum update -y; \
       yum clean all ;\
       rm -rf /var/cache/yum )
 RUN yum install -y sudo
-
 RUN yum install -y openssh-clients
 RUN echo "default:default" | chpasswd
 RUN echo "root   ALL=(ALL)       ALL" >> /etc/sudoers
